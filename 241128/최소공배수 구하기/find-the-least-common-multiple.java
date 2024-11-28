@@ -13,7 +13,7 @@ public class Main {
             }
         }
         // gcm = gcd * a * b; // 최대공약수 * (n을 최대공약수로 나눈 값) * (m을 최대공약수로 나눈 값)
-        gcm = n * m * gcd; // 위 풀이를 연산하면 이 풀이와 사실상 똑같음
+        gcm = n * m / gcd; // 위 풀이를 연산하면 이 풀이와 사실상 똑같음
         System.out.println(gcm);
     }
 
