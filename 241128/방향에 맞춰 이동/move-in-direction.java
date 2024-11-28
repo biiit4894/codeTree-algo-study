@@ -14,19 +14,20 @@ public class Main {
         for(int i = 0; i < n; i++) {
             String dir = sc.next(); // E, S, W, N
             int dis = sc.nextInt();
+            
+            int dirNum;
             if(dir.equals("E")) {
-                nx += dx[0] * dis;
-                ny += dy[0];
+                dirNum = 0;
             } else if(dir.equals("S")) {
-                nx += dx[1];
-                ny += dy[1] * dis;
+                dirNum = 1;
             } else if(dir.equals("W")) {
-                nx += dx[2] * dis;
-                ny += dy[2];
+                dirNum = 2;
             } else {
-                nx += dx[3];
-                ny += dy[3] * dis;
+                dirNum = 3;
             }
+
+            nx += dx[dirNum] * dis;
+            ny += dy[dirNum] * dis;
         }
 
         System.out.println(nx + " " + ny);
