@@ -2,23 +2,20 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class Main {
-    public static boolean isTimes(int n) {
-        return n % 3 == 0;
+    public static boolean contains369(int n) {
+        // 계속 10으로 나누면서 일의자리 조사하기
+        while(n > 0) {
+            if(n % 10 == 3 || n % 10 == 6 || n % 10 == 9) {
+                return true;
+            }
+            n /= 10;
+        }
+
+        return false;
     }
 
-    public static boolean isMagicNumber(int n) {
-        
-        String str = Integer.toString(n);
-        char[] arr = str.toCharArray();
-
-        boolean flag = false;;
-        for(char c : arr) {
-            if (c == '3' || c == '6' || c == '9') {
-                flag = true;
-                break;              
-            }
-        }
-        return flag;
+    public static boolean is369Number(int n) {
+        return contains369(n) || (n % 3 == 0);
     }
 
     public static void main(String[] args) {
@@ -28,7 +25,7 @@ public class Main {
         int count = 0;
 
         for(int i = a; i <= b; i++) {
-            if(isMagicNumber(i) || isTimes(i)) {
+            if(is369Number(i)) {
                 count++;
             }
         }
