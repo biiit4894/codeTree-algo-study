@@ -14,7 +14,6 @@ public class Main {
     }
     public static void sum(int a, int b) {
         int sum = 0;
-        if()
         for(int i = a; i <= b; i++) {
             if(isPrime(i)) {
                 sum += i;
