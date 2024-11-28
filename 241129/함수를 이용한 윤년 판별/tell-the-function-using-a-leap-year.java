@@ -13,7 +13,7 @@ public class Main {
         if(y % 400 == 0) {
             return true;
         }
-        return true;
+        return false;
         
     }
 
