@@ -10,7 +10,7 @@ public class Main {
                     break;
                 }
                 System.out.print(j + " ");
-                if(idx % 4 == 0) {
+                if(idx % n == 0) {
                     System.out.println();
                 }
                 idx++;
