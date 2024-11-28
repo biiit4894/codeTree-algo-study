@@ -3,19 +3,16 @@ import java.util.Scanner;
 public class Main {
     public static void printRect(int n) {
         int idx = 1;
-        for(int i = 0; i <= n * n / 9; i++) {
-            
-            for(int j = 1; j <= 9; j++) {
-                if(idx > n * n) {
-                    break;
-                }
-                System.out.print(j + " ");
-                if(idx % n == 0) {
-                    System.out.println();
-                }
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                System.out.print(idx + " ");
                 idx++;
+                if(idx == 10) {
+                    idx = 1;
+                }
             }
-        }   
+            System.out.println();
+        }
             
     }
 
