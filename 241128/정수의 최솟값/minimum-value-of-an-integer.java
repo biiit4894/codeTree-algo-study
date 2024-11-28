@@ -3,20 +3,11 @@ import java.util.Scanner;
 public class Main {
     public static int findMin(int a, int b, int c) {
         
-        int min = 0;
-        // a < b < c
-        // a < c < b
-
-        // b < a < c
-        // b < c < a
-
-        // c < a < b
-        // c < b < a
-        if((a <= b && b <= c) || (a <= c && c <= b)) {
-            min = a;
-        } else if((b <= a && a <= c) || (b <= c && c <= a)) {
+        int min = a;
+        if(min > b) {
             min = b;
-        } else if((c <= a && a <= b) || (c <= b && b <= a)) {
+        }
+        if(min > c) {
             min = c;
         }
         return min;
