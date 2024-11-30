@@ -2,41 +2,44 @@ import java.util.Scanner;
 import java.util.List;
 
 public class Main {
-    public static boolean isContinuousPartialSequence(int[] arr1, int[] arr2) {
-        boolean isPartialSequence = false;
+    public static final int MAX_N = 100;
 
-        for(int i = 0; i < arr2.length - 1; i++) {
-            for(int j = 0; j < arr1.length; j++) {
-                if(arr2[i] == arr1[j]) {
-                    isPartialSequence = true;
-                }
-                if(arr2[i] == arr1[j] && arr2[i+1] != arr1[j+1]) {
-                    return false;
-                }
+    public static int n1, n2;
+    public static int[] a = new int[MAX_N];
+    public static int[] b = new int[MAX_N];
+
+    public static boolean isSame(int n) {
+        for(int i = 0; i < n2; i++) {
+            if(a[i + n] != b[i]) {
+                return false;
             }
         }
-        if(!isPartialSequence) {
-            return false;
-        }
         return true;
+    }
+    
+    public static boolean isContinuousPartialSequence() {
+        for(int i = 0; i <= n1 - n2; i++) {
+            if(isSame(i)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n1 = sc.nextInt();
-        int n2 = sc.nextInt();
+        n1 = sc.nextInt();
+        n2 = sc.nextInt();
 
-        int[] arr1 = new int[n1];
         for(int i = 0; i < n1; i++) {
-            arr1[i] = sc.nextInt();
+            a[i] = sc.nextInt();
         }
 
-        int[] arr2 = new int[n2];
         for(int i = 0; i < n2; i++) {
-            arr2[i] = sc.nextInt();
+            b[i] = sc.nextInt();
         }
 
-        if(isContinuousPartialSequence(arr1, arr2)) {
+        if(isContinuousPartialSequence()) {
             System.out.println("Yes");
         } else {
             System.out.println("No");
