@@ -2,15 +2,11 @@ import java.util.Scanner;
 public class Main {
 
     public static boolean isSumEvenNumber(int num) {
-        int sum= 0;
-        while(num > 0) {
-            sum += (num % 10);
-            num /= 10;
-        }
-        if(sum % 2 == 0) {
+        // 1 <= a, b <= 100 이 문제 조건이니 이런 풀이도 가능
+        int digitSum = (num / 100) + ((num / 10) % 10) + (num % 10);
+        if(digitSum % 2 == 0) {
             return true;
-        } 
-
+        }
         return false;
     }
 
