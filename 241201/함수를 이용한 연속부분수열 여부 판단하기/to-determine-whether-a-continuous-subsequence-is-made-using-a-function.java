@@ -9,7 +9,7 @@ public class Main {
             for(int j = 0; j < arr1.length; j++) {
                 if(arr2[i] == arr1[j]) {
                     isPartialSequence = true;
-                })
+                }
                 if(arr2[i] == arr1[j] && arr2[i+1] != arr1[j+1]) {
                     return false;
                 }
