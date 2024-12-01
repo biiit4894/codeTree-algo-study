@@ -32,29 +32,28 @@ public class Main {
 
     }
     
-    public static String findSeason() {
-        if(d <= findDays()) {
-            if(m >= 3 && m <= 5) {
-                return "Spring";
-            }
-            if(m >= 6 && m <= 8) {
-                return "Summer";
-            }
-            if(m >= 9 && m <= 11) {
-                return "Fall";
-            }
-            if(m == 12 || m <= 2) {
-                return "Winter";
-            }
-        }
-        return "-1";
-    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         y = sc.nextInt();
         m = sc.nextInt();
         d = sc.nextInt();
 
-        System.out.println(findSeason());
+        if(d <= findDays()) {
+            if(m >= 3 && m <= 5) {
+                System.out.println("Spring");
+            }
+            if(m >= 6 && m <= 8) {
+                System.out.println("Summer");
+
+            }
+            if(m >= 9 && m <= 11) {
+                System.out.println("Fall");
+            }
+            if(m == 12 || m <= 2) {
+                System.out.println("Winter");
+            }
+        } else {
+            System.out.println(-1);
+        }
     }
 }
