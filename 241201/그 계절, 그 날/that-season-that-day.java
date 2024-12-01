@@ -4,14 +4,16 @@ public class Main {
 
     public static int y, m, d;
 
-    public static boolean judgeLunarYear() {
-        if(y % 4 == 0) {
+    public static boolean judgeLeapYear() {
+        
+        
+        if(y % 400 == 0) {
             return true;
         }
-        if(y % 4 == 0 && y % 100 == 0) {
+        if(y % 100 == 0) {
             return false;
         }
-        if(y % 4 == 0 && y % 100 == 0 && y % 400 == 0) {
+        if(y % 4 == 0) {
             return true;
         }
         return false;
@@ -21,7 +23,7 @@ public class Main {
         if (m == 4 || m == 6 || m == 9 || m == 11) {
             return 30;
         } 
-        if(judgeLunarYear()) {
+        if(judgeLeapYear()) {
             if(m == 2) {
                 return 29;
             }
