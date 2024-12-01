@@ -40,8 +40,9 @@ public class Main {
         int d = sc.nextInt();
 
         // y년 m월 d일이 존재하지 않는다면 -1을 출력
-        if(!isExistDay(y, m ,d)) {
+        if(!isExistDay(y, m , d)) {
             System.out.println("-1");
+            System.exit(0);
         }
 
         // y년 m월 d일이 존재한다면 달에 맞는 계절을 출력
