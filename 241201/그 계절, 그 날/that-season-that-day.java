@@ -39,7 +39,7 @@ public class Main {
                 return "Summer";
             }
             if(m >= 9 && m <= 11) {
-                return "Autumn";
+                return "Fall";
             }
             if(m == 12 || m <= 2) {
                 return "Winter";
