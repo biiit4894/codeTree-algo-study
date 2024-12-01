@@ -22,7 +22,9 @@ public class Main {
             if(m == 2) {
                 return 29;
             }
-        } else if(m == 2 || m == 4 || m == 6 || m == 9 || m == 11) {
+        } else if(m  == 2) {
+            return 28;
+        } else if (m == 4 || m == 6 || m == 9 || m == 11) {
             return 30;
         } 
         return 31;
