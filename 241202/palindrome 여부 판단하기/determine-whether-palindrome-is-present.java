@@ -2,13 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static boolean isPalindrome(String s) {
-        boolean flag = true;
         for(int i = 0; i < s.length(); i++) {
             if(s.charAt(i) != s.charAt(s.length() - i - 1)) {
-                flag = false;
+                return false;
             }
         }
-        return flag;
+        return true;
     }
 
     public static void main(String[] args) {
