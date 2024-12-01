@@ -6,7 +6,7 @@ public class Main {
 
     public static boolean judgeLeapYear() {
         
-        
+        // 문제에서 주어진 윤년의 조건을 그대로 옮기면 될까? 잘 생각해보자
         if(y % 400 == 0) {
             return true;
         }
