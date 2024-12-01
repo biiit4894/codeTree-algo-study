@@ -18,14 +18,15 @@ public class Main {
     }
 
     public static int findDays() {
+        if (m == 4 || m == 6 || m == 9 || m == 11) {
+            return 30;
+        } 
         if(judgeLunarYear()) {
             if(m == 2) {
                 return 29;
             }
-        } else if(m  == 2) {
+        } else if(m == 2) {
             return 28;
-        } else if (m == 4 || m == 6 || m == 9 || m == 11) {
-            return 30;
         } 
         return 31;
 
