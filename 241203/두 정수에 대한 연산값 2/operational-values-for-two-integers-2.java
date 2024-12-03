@@ -2,12 +2,13 @@ import java.util.Scanner;
 
 class IntWrapper {
     int value;
-    IntWrapper(int value) {
+    public IntWrapper(int value) {
         this.value = value;
     }
 }
 
 public class Main {
+    // call by reference 구현
     public static void modify(IntWrapper wrapper1, IntWrapper wrapper2) {
         if(wrapper1.value > wrapper2.value) {
             wrapper2.value += 10;
@@ -25,6 +26,7 @@ public class Main {
 
         IntWrapper wrapper1 = new IntWrapper(a);
         IntWrapper wrapper2 = new IntWrapper(b);
+
         modify(wrapper1, wrapper2);
 
         a = wrapper1.value;
