@@ -1,33 +1,37 @@
 import java.util.Scanner;
 
-public class Main {
-
-    public static int n, m;
-    public static int[] arr;
-
-    public static int minusOrDivide() {
-        int sum = 0;
-        while(m >= 1) {
-            sum += arr[m - 1];
-            if(m % 2 != 0) {
-                m -= 1;
-            } else {
-                m /= 2;
-            }
+public class Main {    
+    public static final int MAX_N = 100;
+    
+    public static int[] arr = new int[MAX_N + 1];
+    public static int cnt;
+    
+    // 문제에서 구하고자 하는 값을 반환합니다.
+    public static int getAnswer() {
+        int returnValue = 0;
+        while(cnt >= 1) {
+            returnValue += arr[cnt];
+            
+            if(cnt % 2 == 0)
+                cnt /= 2;
+            else
+                cnt--;
         }
-        return sum;
+    
+        return returnValue;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        m = sc.nextInt();
-        arr = new int[n];
+        // 변수 선언 및 입력:
+        int n = sc.nextInt();
+        int m = sc.nextInt();
 
-        for(int i = 0; i < n ; i++) {
+        for(int i = 1; i <= n; i++)
             arr[i] = sc.nextInt();
-        }
 
-        System.out.println(minusOrDivide());
+        cnt = m;
+        
+        System.out.print(getAnswer());
     }
 }
