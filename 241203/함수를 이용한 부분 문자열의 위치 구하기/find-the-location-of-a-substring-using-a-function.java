@@ -4,7 +4,7 @@ public class Main {
     public static String m, n;
     
     public static int getStartIndex() {
-        for(int i = 0; i < m.length() - 1; i++) {
+        for(int i = 0; i < m.length(); i++) {
             if(m.substring(i).startsWith(n)) {
                 return i;
             }
