@@ -9,6 +9,9 @@ public class Main {
                 if(n.charAt(i) == m.charAt(j) && n.charAt(i + 1) == m.charAt(j + 1)) {
                     return j;
                 }
+                if(n.charAt(i) == m.charAt(j)) {
+                    return j;
+                }
             }
         }
         return -1;
