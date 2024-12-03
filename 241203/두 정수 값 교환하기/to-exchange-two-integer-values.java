@@ -24,6 +24,9 @@ public class Main {
         IntWrapper m = new IntWrapper(b);
 
         modify(n, m); 
-        System.out.println(n.value + " " + m.value);
+        a = n.value;
+        b = m.value;
+
+        System.out.println(a + " " + b);
     }
 }
