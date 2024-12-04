@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String id = sc.next();
-        int level = sc.next();
+        int level = sc.nextInt();
 
         Level level1 = new Level();
         level1.id = "codetree";
