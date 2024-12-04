@@ -1,15 +1,10 @@
 import java.util.Scanner;
 
 public class Main {
-
-    public static int count = 0;
-
     public static int F(int n) {
-
         if(n == 1) {
             return 0;
         }
-
         if(n % 2 == 0) {
             return F(n / 2) + 1;
         } else {
