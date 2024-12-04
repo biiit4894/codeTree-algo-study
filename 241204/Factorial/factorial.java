@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static int facto(int n) {
-        if(n == 0 || n == 1) {
+        if(n == 0) { // 사실상 이렇게만 해도 팩토리얼
             return 1;
         }
         return facto(n - 1) * n;
