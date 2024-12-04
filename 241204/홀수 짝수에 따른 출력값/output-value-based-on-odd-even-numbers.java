@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static int getSum(int n) {
         if(n == 1) {
-            return n;
+            return 1;
         }
         return getSum(n - 2) + n;
         
