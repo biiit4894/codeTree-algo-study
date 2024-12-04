@@ -7,14 +7,13 @@ public class Main {
     public static int F(int n) {
 
         if(n == 1) {
-            return count;
+            return 0;
         }
-        count++;
 
         if(n % 2 == 0) {
-            return F(n /= 2);
+            return F(n / 2) + 1;
         } else {
-            return F(n /= 3);
+            return F(n / 3) + 1;
         }
     }
     public static void main(String[] args) {
