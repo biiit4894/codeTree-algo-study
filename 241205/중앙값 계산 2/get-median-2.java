@@ -7,6 +7,7 @@ public class Main {
     public static int[] arr = new int[MAX_INT];
 
     public static void findMedian(int i) {
+        Arrays.sort(arr, 1, i+1);
         if(i == 1) {
             System.out.print(arr[i] + " ");
         } else {
@@ -23,7 +24,7 @@ public class Main {
             arr[i] = sc.nextInt();
             
         }
-        Arrays.sort(arr, 0, n);
+        
 
         for(int i = 1; i <= n; i++) {
             if(i % 2 != 0) {
