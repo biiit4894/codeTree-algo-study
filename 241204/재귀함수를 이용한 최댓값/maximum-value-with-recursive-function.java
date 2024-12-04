@@ -1,29 +1,26 @@
 import java.util.Scanner;
-
+// 해설 
 public class Main {
-    public static int[] arr;
+    public static final int MAX_N = 100;
 
-    public static int temp = Integer.MIN_VALUE;
+    public static int[] arr = new int[MAX_N];
 
-    public static int getMax(int x) {
-
-        if(x < 1) {
-            return temp;
+    public static int maxValue(int a) {
+        if(a == 0) {
+            return arr[0];
         }
-        if(temp < arr[x]) {
-            temp = arr[x];
-        }
-        return getMax(x - 1);
 
+        return Math.max(maxValue(a - 1), arr[a]);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        arr = new int[n + 1];
-        for(int i = 1; i <= n; i++) {
+        
+        for(int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        System.out.println(getMax(n));
+
+        System.out.println(maxValue(n - 1));
     }
 }
