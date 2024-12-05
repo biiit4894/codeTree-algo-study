@@ -2,8 +2,8 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Comparator;
 
-// custom comparator를 활용한 정렬 
-class Student implements Comparable<Student> {
+// custom comparator를 활용한 정렬 2
+class Student {
     String name;
     int height, weight;
 
@@ -11,11 +11,6 @@ class Student implements Comparable<Student> {
         this.name = name;
         this.height = height;
         this.weight = weight;
-    }
-
-    @Override
-    public int compareTo(Student student) {
-        return this.height - student.height;
     }
 }
 
@@ -32,7 +27,12 @@ public class Main {
             students[i] = new Student(name, height, weight);
         };
 
-        Arrays.sort(students);
+        Arrays.sort(students, new Comparator<Student>(){
+            @Override
+            public int compare(Student a, Student b) {
+                return a.height - b.height;
+            }
+        });
 
         for(int i = 0; i < n; i++) {
             Student student = students[i];
