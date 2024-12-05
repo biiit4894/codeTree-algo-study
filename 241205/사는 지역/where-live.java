@@ -29,7 +29,13 @@ public class Main {
         for(int i = 0; i < n; i++) {
             if(users[maxIdx].name.charAt(0) < users[i].name.charAt(0)) {
                 maxIdx = i;
-            } 
+            } else {
+                for(int j = 1; j < users[i].name.length(); j++) {
+                    if(users[maxIdx].name.charAt(j) < users[i].name.charAt(j)) {
+                        maxIdx = j;
+                    }
+                }
+            }
         }
         System.out.println("name " + users[maxIdx].name);
         System.out.println("addr " + users[maxIdx].houseNumber);
