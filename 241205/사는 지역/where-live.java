@@ -20,32 +20,23 @@ public class Main {
         int n = sc.nextInt();
 
         User[] users = new User[n];
-        String[] names = new String[n];
 
         for(int i = 0; i < n; i++) {
             String name = sc.next();
             String houseNumber = sc.next();
             String region = sc.next();
             users[i]= new User(name, houseNumber, region);
-            names[i] = name;
         }
 
-        Arrays.sort(users, new Comparator<User>() {
-            public int compare(User user1, User user2) {
-                if(user1.name.length() == user2.name.length()) {
-                    return user1.name.compareTo(user2.name);
-                } else {
-                    return user1.name.length() - user2.name.length();
-                }
+        int lastIdx = 0;
+        for(int i = 1; i < n; i++) {
+            if(users[i].name.compareTo(users[lastIdx].name) > 0) {
+                lastIdx = i;
             }
-        });
+        }
 
-        // for(int i = 0; i < n; i++) {
-        //     System.out.println("name " + (i + 1) + " : " + names[i]);
-        // }
-
-        System.out.println("name " + users[n - 1].name);
-        System.out.println("addr " + users[n - 1].houseNumber);
-        System.out.println("city " + users[n - 1].region);
+        System.out.println("name " + users[lastIdx].name);
+        System.out.println("addr " + users[lastIdx].houseNumber);
+        System.out.println("city " + users[lastIdx].region);
     }
 }
