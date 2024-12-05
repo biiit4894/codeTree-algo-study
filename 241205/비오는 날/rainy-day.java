@@ -50,8 +50,10 @@ public class Main {
                 } else if(currentYear == targetYear) {
                     if(currentMonth > targetMonth) {
                         rainIdx = i;
-                    } else if(currentDay > targetDay) {
-                        rainIdx = i;
+                    } else if(currentMonth == targetMonth) {
+                        if(currentDay > targetDay) {
+                            rainIdx = i;                     
+                        }
                     }
                 }
             } 
