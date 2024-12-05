@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Comparator;
+
 class User {
     String name;
     String houseNumber;
@@ -17,28 +20,32 @@ public class Main {
         int n = sc.nextInt();
 
         User[] users = new User[n];
+        String[] names = new String[n];
 
         for(int i = 0; i < n; i++) {
             String name = sc.next();
             String houseNumber = sc.next();
             String region = sc.next();
             users[i]= new User(name, houseNumber, region);
+            names[i] = name;
         }
 
-        int maxIdx = 0;
-        for(int i = 0; i < n; i++) {
-            if(users[maxIdx].name.charAt(0) < users[i].name.charAt(0)) {
-                maxIdx = i;
-            } else {
-                for(int j = 1; j < users[i].name.length(); j++) {
-                    if(users[maxIdx].name.charAt(j) < users[i].name.charAt(j)) {
-                        maxIdx = j;
-                    }
+        Arrays.sort(users, new Comparator<User>() {
+            public int compare(User user1, User user2) {
+                if(user1.name.length() == user2.name.length()) {
+                    return user1.name.compareTo(user2.name);
+                } else {
+                    return user1.name.length() - user2.name.length();
                 }
             }
-        }
-        System.out.println("name " + users[maxIdx].name);
-        System.out.println("addr " + users[maxIdx].houseNumber);
-        System.out.println("city " + users[maxIdx].region);
+        });
+
+        // for(int i = 0; i < n; i++) {
+        //     System.out.println("name " + (i + 1) + " : " + names[i]);
+        // }
+
+        System.out.println("name " + users[n - 1].name);
+        System.out.println("addr " + users[n - 1].houseNumber);
+        System.out.println("city " + users[n - 1].region);
     }
 }
