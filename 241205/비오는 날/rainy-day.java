@@ -33,27 +33,25 @@ public class Main {
             String currentWeather = forecasts[rainIdx].weather;
             String targetWeather = forecasts[i].weather;
 
-            
-            int targetYear = Integer.parseInt(forecasts[i].date.substring(0, 4));
             int currentYear = Integer.parseInt(forecasts[rainIdx].date.substring(0, 4));
+            int targetYear = Integer.parseInt(forecasts[i].date.substring(0, 4));
+            
+            int currentMonth = Integer.parseInt(forecasts[rainIdx].date.substring(5, 7));
+            int targetMonth = Integer.parseInt(forecasts[i].date.substring(5, 7));
+
+            int currentDay = Integer.parseInt(forecasts[rainIdx].date.substring(8));
+            int targetDay = Integer.parseInt(forecasts[i].date.substring(8));
 
             if(!currentWeather.equals("Rain") && targetWeather.equals("Rain")) {
                 rainIdx = i;
             } else if(currentWeather.equals("Rain") && targetWeather.equals("Rain")) {
-                
-                if(targetYear < currentYear) {
+                if(currentYear > targetYear) {
                     rainIdx = i;
-                } else if(targetWeather == currentWeather) {
-                    int month1 = Integer.parseInt(forecasts[i].date.substring(5, 7));
-                    int month2 = Integer.parseInt(forecasts[rainIdx].date.substring(5, 7));
-                    if(month1 < month2) {
+                } else if(currentYear == targetYear) {
+                    if(currentMonth > targetMonth) {
                         rainIdx = i;
-                    } else {
-                        int day1 = Integer.parseInt(forecasts[i].date.substring(8));
-                        int day2 = Integer.parseInt(forecasts[rainIdx].date.substring(8));
-                        if(day1 < day2) {
-                            rainIdx = i;
-                        }
+                    } else if(currentDay > targetDay) {
+                        rainIdx = i;
                     }
                 }
             } 
