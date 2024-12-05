@@ -21,15 +21,14 @@ public class Main {
             agents[i] = new Agent(codeName, score);
         } 
 
-        int minScore = 1000;
-        int agentIdx = 0;
+        // 점수의 최솟값을 계속 저장할 필요 없이 최소 점수를 갖는 요원 번호만 가져와도 충분
+        int minIdx = 0;
         for(int i = 0; i < 5; i++) {
-            if(minScore > agents[i].score) {
-                minScore = agents[i].score;
-                agentIdx = i;
+            if(agents[minIdx].score > agents[i].score) {
+                minIdx = i;
             }
         }
-        System.out.println(agents[agentIdx].codeName + " " + agents[agentIdx].score);
+        System.out.println(agents[minIdx].codeName + " " + agents[minIdx].score);
 
         
     }
