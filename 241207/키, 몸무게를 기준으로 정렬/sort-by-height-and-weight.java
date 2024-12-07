@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Comparator;
 
-class Person {
+class Person implements Comparable<Person> {
     String name;
     int height, weight;
 
@@ -10,6 +10,14 @@ class Person {
         this.name = name;
         this.height = height;
         this.weight = weight;
+    }
+
+    @Override
+    public int compareTo(Person person) {
+        if(this.height != person.height) {
+            return this.height - person.height; 
+        }
+        return person.weight - this.weight;
     }
 }
 
@@ -24,16 +32,7 @@ public class Main {
             int weight = sc.nextInt();
             people[i] = new Person(name, height, weight);
         }
-        Arrays.sort(people, new Comparator<Person>() {
-            @Override
-            public int compare(Person person1, Person person2) {
-                if(person1.height != person2.height) {
-                    return person1.height - person2.height;
-                }
-                return person2.weight - person1.weight;
-
-            }
-        });
+        Arrays.sort(people, 0, n);
 
         for(int i= 0 ; i < n; i++) {
             System.out.println(people[i].name + " " + people[i].height + " " + people[i].weight);
