@@ -22,11 +22,11 @@ public class Main {
             d1++;
 
             if(d1 > days[m1]) {
-                d1 = 0;
+                d1 = 1;
                 m1++;
             }
         }
 
-        System.out.println(elapsedDays);
+        System.out.println(elapsedDays + 1);
     }
 }
