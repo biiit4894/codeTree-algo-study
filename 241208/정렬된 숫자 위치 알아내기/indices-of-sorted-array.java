@@ -10,7 +10,10 @@ class Element implements Comparable<Element>{
 
     @Override
     public int compareTo(Element element) {
-        return this.value - element.value;
+        if(this.value != element.value) {
+            return this.value - element.value;
+        }
+        return this.index - element.index;
     }
 
 }
@@ -23,8 +26,7 @@ public class Main {
 
         for(int i = 0; i < n; i++) {
             int value = sc.nextInt();
-            int index = i + 1;
-            elements[i] = new Element(value, index);
+            elements[i] = new Element(value, i);
         }
 
         Arrays.sort(elements, 0, n);
@@ -34,7 +36,7 @@ public class Main {
             indexes[elements[i].index] = i + 1;
         }
 
-        for(int i = 1; i <= n; i++) {
+        for(int i = 0; i < n; i++) {
             System.out.print(indexes[i] + " ");
         }
 
