@@ -24,10 +24,21 @@ public class Main {
         int endDate = getTotalDays(m2, d2);
         int startDate = getTotalDays(m1, d1);
 
-        if((endDate - startDate) / 7 != 0 && (endDate - startDate) % 7 != 0) {
-            System.out.println((endDate - startDate) / 7 + 1);
+        int dayIdx = 0;
+        for(int i = 0; i < 7; i++) {
+            if(day.equals(days[i])) {
+                dayIdx = i;
+            }
+        }
+
+        int diff = endDate - startDate;
+
+        if(diff == 0 && day.equals("Mon")) {
+            System.out.println(1);
+        } else if(diff % 7 >= dayIdx) {
+            System.out.println(diff / 7 + 1);
         } else {
-            System.out.println((endDate - startDate) / 7);
+            System.out.println(diff / 7);
         }
 
     }
