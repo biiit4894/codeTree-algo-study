@@ -12,7 +12,7 @@ public class Main {
         int endTime = (a - 1) * 24 * 60 + b * 60 + c;
         int startTime = (day - 1) * 24 * 60 + hour * 60 + mins;
 
-        if(starTime > endTime) {
+        if(startTime > endTime) {
             System.out.println(-1);
         } else {
             System.out.println(endTime - startTime);
