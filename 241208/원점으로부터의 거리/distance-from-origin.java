@@ -1,13 +1,22 @@
 import java.util.Scanner;
 import java.util.Arrays;
-import java.util.Comparator;
 
-class Point {
+class Point implements Comparable<Point> {
     int num, x, y;
     public Point(int num, int x, int y) {
         this.num = num;
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public int compareTo(Point point) {
+        int distance1 = Math.abs(this.x) + Math.abs(this.y);
+        int distance2 = Math.abs(point.x) + Math.abs(point.y);
+        if(distance1 != distance2) {
+            return distance1 - distance2;
+        } 
+        return this.num - point.num;
     }
 }
 
@@ -24,18 +33,7 @@ public class Main {
             points[i] = new Point(num, x, y);
         }
 
-        Arrays.sort(points, new Comparator<Point>() {
-            @Override
-            public int compare(Point point1, Point point2) {
-                int distance1 = Math.abs(point1.x) + Math.abs(point1.y);
-                int distance2 = Math.abs(point2.x) + Math.abs(point2.y);
-                if(distance1 != distance2) {
-                    return distance1 - distance2;
-                } 
-                return point1.num - point2.num;
-            }
-            
-        });
+        Arrays.sort(points, 0, n);
 
         for(int i = 0; i < n; i++) {
             System.out.println(points[i].num);
