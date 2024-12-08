@@ -10,7 +10,11 @@ public class Main {
         int c = sc.nextInt(); // 분
 
         int elapsedTime = 0;
-        while(true) {
+
+        if(day > a || hour > b || mins > c) {
+            elapsedTime = -1;
+        } else {
+            while(true) {
             if(day == a && hour == b && mins == c) {
                 break;
             }
@@ -27,6 +31,8 @@ public class Main {
                 day++;
             }
         }
+        }
+        
         System.out.println(elapsedTime);
 
 
