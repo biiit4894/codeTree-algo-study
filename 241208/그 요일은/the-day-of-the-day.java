@@ -21,8 +21,10 @@ public class Main {
         String day = sc.next();
 
         String[] days = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+        
         int endDate = getTotalDays(m2, d2);
         int startDate = getTotalDays(m1, d1);
+        int diff = endDate - startDate;
 
         int dayIdx = 0;
         for(int i = 0; i < 7; i++) {
@@ -31,11 +33,8 @@ public class Main {
             }
         }
 
-        int diff = endDate - startDate;
 
-        if(diff == 0 && day.equals("Mon")) {
-            System.out.println(1);
-        } else if(diff % 7 >= dayIdx) {
+        if(diff % 7 >= dayIdx) {
             System.out.println(diff / 7 + 1);
         } else {
             System.out.println(diff / 7);
