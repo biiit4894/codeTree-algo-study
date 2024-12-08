@@ -24,7 +24,9 @@ public class Main {
         int endDate = getTotalDays(m2, d2);
         int startDate = getTotalDays(m1, d1);
 
-        if((endDate - startDate) % 7 != 0) {
+        if(endDate == startDate) {
+            System.out.println(1);
+        } else if((endDate - startDate) % 7 != 0) {
             System.out.println((endDate - startDate) / 7 + 1);
         } else {
             System.out.println((endDate - startDate) / 7);
