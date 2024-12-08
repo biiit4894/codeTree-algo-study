@@ -1,21 +1,23 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        int n = 209;
-        int[] digits = new int[20];
-        int cnt = 0;
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int count = 0;
 
         while(true) {
             if(n < 2) {
-                digits[cnt++] = n;
+                arr[count++] = n;
                 break;
             }
-
-            digits[cnt++] = n % 2;
+            arr[count++] = n % 2;
             n /= 2;
         }
 
-        for(int i = cnt - 1; i >= 0; i--) {
-            System.out.print(digits[i]);
+        for(int i = count - 1; i >= 0; i--) {
+            System.out.print(arr[i]);
         }
     }
 }
