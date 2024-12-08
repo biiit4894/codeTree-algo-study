@@ -27,8 +27,8 @@ public class Main {
         Arrays.sort(points, new Comparator<Point>() {
             @Override
             public int compare(Point point1, Point point2) {
-                int distance1 = Math.abs(point1.x + point1.y);
-                int distance2 = Math.abs(point2.x + point2.y);
+                int distance1 = Math.abs(point1.x) + Math.abs(point1.y);
+                int distance2 = Math.abs(point2.x) + Math.abs(point2.y);
                 if(distance1 != distance2) {
                     return distance1 - distance2;
                 } 
