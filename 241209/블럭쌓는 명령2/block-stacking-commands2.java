@@ -19,8 +19,8 @@ public class Main {
 
         int max = 0;
         for(int i = 1; i <= n; i++) {
-            if(max < arr[j]) {
-                max = arr[j];
+            if(max < arr[i]) {
+                max = arr[i];
             }
         }
 
