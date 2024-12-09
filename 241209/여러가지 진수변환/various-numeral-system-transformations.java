@@ -11,7 +11,7 @@ public class Main {
         
         int cnt = 0;
         while(true) {
-            if(n < 4) {
+            if(n < b) {
                 arr[cnt++] = n;
                 break;
             }
