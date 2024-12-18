@@ -21,7 +21,7 @@ public class Main {
                     cur--;
                     dis--;
                 }
-                cur++;
+                cur++; // cur값 보정 필요
 
             } else if(dir == 'R') {
                 while(dis > 0) {
@@ -29,7 +29,7 @@ public class Main {
                     cur++;
                     dis--;
                 }
-                cur--;
+                cur--; // cur값 보정 필요
             }
         }
         
