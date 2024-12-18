@@ -9,21 +9,27 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
+        int cur = MAX_K;
+
         for(int i = 0; i < n; i++) {
             int dis = sc.nextInt();
             char dir = sc.next().charAt(0);
 
             if(dir == 'L') {
                 while(dis > 0) {
-                    checked[dis] = 1;
+                    checked[cur] = 1;
+                    cur--;
                     dis--;
                 }
+                cur++;
 
-            } else {
+            } else if(dir == 'R') {
                 while(dis > 0) {
-                    checked[dis] = 2;
+                    checked[cur] = 2;
+                    cur++;
                     dis--;
                 }
+                cur--;
             }
         }
         
