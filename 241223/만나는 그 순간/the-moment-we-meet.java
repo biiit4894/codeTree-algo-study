@@ -48,7 +48,7 @@ public class Main {
         
         // 최초로 만나는 시간을 구합니다.
         int ans = -1;
-        for(int i = 1; i < timeA; i++) {
+        for(int i = 1; i <= timeA; i++) {
             if(posA[i] == posB[i]) {
                 ans = i;
                 break;
