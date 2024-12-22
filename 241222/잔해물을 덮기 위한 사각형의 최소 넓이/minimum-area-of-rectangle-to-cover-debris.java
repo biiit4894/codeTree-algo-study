@@ -44,7 +44,6 @@ public class Main {
             for(int y = 0; y <= MAX_R; y++) {
                 if(checked[x][y] == 1) {
                     flag = false;
-                    System.out.println("1");
                     if(x1 > x) {
                         x1 = x;
                     }
