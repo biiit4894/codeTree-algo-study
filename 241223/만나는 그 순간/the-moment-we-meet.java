@@ -1,66 +1,61 @@
 import java.util.Scanner;
-
+// 해설
 public class Main {
-    public static final int MAX_N = 1000;
-    public static int[] arr_a = new int[MAX_N * MAX_N + 1];   
-    public static int[] arr_b = new int[MAX_N * MAX_N + 1];
+    public static final int MAX_T = 1000000;
+
+    public static int n, m;
+    public static int[] posA = new int[MAX_T + 1];
+    public static int[] posB = new int[MAX_T + 1];
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
 
-        
-        int a_loc = 0;
-        int a_time = 0;
+        // 입력
+        n = sc.nextInt();
+        m = sc.nextInt();
+
+        // A가 매 초마다 서있는 위치를 기록
+        int timeA = 1;
         for(int i = 0; i < n; i++) {
-            char d = sc.next().charAt(0);
+            char d = sc.next().charAt(0); 
             int t = sc.nextInt();
-            if(d == 'L') {
-                for(int j = 0; j < t; j++) {
-                    arr_a[a_time] = a_loc;
-                    a_time++;
-                    a_loc--;
-                }
-            } else {
-                for(int j = 0; j < t; j++) {
-                    arr_a[a_time] = a_loc;
-                    a_time++;
-                    a_loc++;
-                }
-            }
-        }
-
-        int b_loc = 0;
-        int b_time = 0;
-        for(int i = 0; i < m; i++) {
-            char d = sc.next().charAt(0);
-            int t = sc.nextInt();
-            if(d == 'L') {
-                for(int j = 0; j < t; j++) {
-                    arr_b[b_time] = b_loc;
-                    b_time++;
-                    b_loc--;
             
-                }
-            } else {
-                for(int j = 0; j < t; j++) {
-                    arr_b[b_time] = b_loc;
-                    b_time++;
-                    b_loc++;
-                }
+            for(int j = 0; j < t; j++) {
+                if(d == 'R')
+                    posA[timeA] = posA[timeA - 1] + 1;
+                else
+                    posA[timeA] = posA[timeA - 1] - 1;
+                
+                timeA++;
             }
         }
-
-        boolean isSameLoc = false;
-        for(int i = 1; i < a_time; i++) {
-            if(arr_a[i] == arr_b[i]) {
-                isSameLoc = true;
-                System.out.println(i);
+        
+        // B가 매 초마다 서있는 위치를 기록
+        int timeB = 1;
+        for(int i = 0; i < m; i++) {
+            char d = sc.next().charAt(0); 
+            int t = sc.nextInt();
+            
+            for(int j = 0; j < t; j++) {
+                if(d == 'R')
+                    posB[timeB] = posB[timeB - 1] + 1;
+                else
+                    posB[timeB] = posB[timeB - 1] - 1;
+                
+                timeB++;
+            }
+        }
+        
+        // 최초로 만나는 시간을 구합니다.
+        int ans = -1;
+        for(int i = 1; i < timeA; i++) {
+            if(posA[i] == posB[i]) {
+                ans = i;
                 break;
             }
         }
-        if(!isSameLoc) {
-            System.out.println(-1);
-        }
+        
+        // 출력
+        System.out.print(ans);
     }
 }
