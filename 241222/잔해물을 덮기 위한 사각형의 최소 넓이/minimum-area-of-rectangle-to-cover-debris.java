@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// 해설
 public class Main {
     public static final int N = 2;
     public static final int MAX_R = 2000;
@@ -26,6 +26,9 @@ public class Main {
             y2[i] += OFFSET;    
         }
 
+        // 직사각형에 주어진 순으로 1, 2 번호를 붙여주기
+        // 격자 단위로 진행하는 문제이니
+        // x2, y2에 등호가 들어가지 않음에 유의하기
         for(int i = 0; i < N; i++) {
             for(int x = x1[i]; x < x2[i]; x++) {
                 for(int y = y1[i]; y < y2[i]; y++) {
@@ -34,38 +37,30 @@ public class Main {
             }
         }
 
-        int x1 = 10000;
-        int y1 = 10000;
-        int x2 = -10000;
-        int y2 = -10000;
-
-        boolean flag = true; // 두 번째 직사각형이 첫 번째 직사각형을 감싸는지 여부
+        // 1, 2 순으로 붙였는데도
+        // 아직 숫자 1로 남아있는 곳들 중 최대 최소 x, y 값을 전부 계산한다
+        int minX = MAX_R, maxX = 0, minY = MAX_R, maxY = 0;
+        boolean firstRectExist = false;
         for(int x = 0; x <= MAX_R; x++) {
             for(int y = 0; y <= MAX_R; y++) {
                 if(checked[x][y] == 1) {
-                    flag = false;
-                    if(x1 > x) {
-                        x1 = x;
-                    }
-                    if(y1 > y) {
-                        y1 = y;
-                    }
-                    if(x2 < x) {
-                        x2 = x;
-                    }
-                    if(y2 < y) {
-                        y2 = y;
-                    }
+                    firstRectExist = true;
+                    minX = Math.min(minX, x);
+                    maxX = Math.max(maxX, x);
+                    minY = Math.min(minY, y);
+                    maxY = Math.max(maxY, y);
                 }
             }
         }
-        if(!flag) {
-            // 좌측하단 좌표 말고 우측상단 좌표는 +1 한 상태에서 넓이 계산해야 함
-            System.out.println((x2 + 1 - x1) * (y2 + 1 - y1));
+
+        int area;
+        if(!firstRectExist) {
+            area = 0;
         } else {
-            System.out.println(0);
+            area = (maxX - minX + 1) * (maxY - minY + 1);
         }
-        
+
+        System.out.print(area);
 
     }
 }
