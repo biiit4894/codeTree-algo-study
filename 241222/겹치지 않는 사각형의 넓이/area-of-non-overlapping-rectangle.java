@@ -1,37 +1,54 @@
 import java.util.Scanner;
-
+// 해설 풀이
 public class Main {
-    public static final int MAX_R = 1000;
+    public static final int N = 3;
+    public static final int MAX_R = 2000;
     public static final int OFFSET = 1000;
-    public static final int[][] checked = new int[2 * MAX_R + 1][2 * MAX_R + 1];
+    
+    public static int[] x1 = new int[N];
+    public static int[] y1 = new int[N];
+    public static int[] x2 = new int[N];
+    public static int[] y2 = new int[N];
+
+    public static int[][] checked = new int[MAX_R + 1][MAX_R + 1];
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        for(int i = 0; i < 3; i++) {
-            int x1 = sc.nextInt();
-            int y1 = sc.nextInt();
-            int x2 = sc.nextInt();
-            int y2 = sc.nextInt();
-            for(int j = x1 + OFFSET; j < x2 + OFFSET; j++) {
-                for(int k = y1 + OFFSET; k < y2 + OFFSET; k++) {
-                    if(i == 2) {
-                        checked[j][k] = 2;
-                    } else {
-                        checked[j][k] = 1;
-                    }
-                }
-            }
-        }
-        int sum = 0;
-        for(int i = 0; i <= 2 * MAX_R; i++) {
-            for(int j = 0; j <= 2 * MAX_R; j++) {
-                if(checked[i][j] == 1) {
-                    sum++;
-                }
-            }
-        }
-        System.out.println(sum);
 
+        for(int i = 0; i < 3; i++) {
+            x1[i] = sc.nextInt();
+            y1[i] = sc.nextInt();
+            x2[i] = sc.nextInt();
+            y2[i] = sc.nextInt();
+
+            x1[i] += OFFSET;
+            y1[i] += OFFSET;
+            x2[i] += OFFSET;
+            y2[i] += OFFSET;
+        }
         
+        // 직사각형에 주어진 순으로 1, 2, 3 번호를 붙이기  
+        // 격자 단위로 진행하는 문제이니
+        // x2, y2에 등호가 들어가지 않음에 유의하기                 
+        for(int i = 0; i < N; i++) {
+            for(int x = x1[i]; x < x2[i]; x++) {
+                for(int y = y1[i]; y < y2[i]; y++) {
+                    checked[x][y] = i + 1;
+                }
+            }
+        }
+
+        // 1, 2, 3 순으로 붙였는데도
+        // 아직 숫자 1, 2로 남아있는 영역의 넓이 구하기
+        int area = 0;
+        for(int x = 0; x <= MAX_R; x++) {
+            for(int y = 0; y <= MAX_R; y++) {
+                if(checked[x][y] == 1 || checked[x][y] == 2) {
+                    area++;
+                }
+            }
+        }
+
+        System.out.print(area); 
     }
 }
