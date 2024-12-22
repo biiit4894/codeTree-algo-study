@@ -12,10 +12,10 @@ public class Main {
         int cnt = 0;
         int max = 0;
         for(int i = 0; i < n; i++) {
-            if(i == 0 || arr[i - 1] != arr[i]) {
-                cnt = 1;
+            if(i >= 1 && arr[i - 1] == arr[i]) {
+                cnt++;
             } else {
-               cnt++;
+               cnt = 1;
             }
             max = Math.max(max, cnt);
         }
