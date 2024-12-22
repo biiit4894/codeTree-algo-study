@@ -1,14 +1,14 @@
 import java.util.Scanner;
-
 public class Main {
     public static int N;
     public static final int MAX_R = 200;
+    public static final int MAX_N = 10;
     public static final int OFFSET = 100;
     
-    public static int[] x1 = new int[MAX_R];
-    public static int[] y1 = new int[MAX_R];
-    public static int[] x2 = new int[MAX_R];
-    public static int[] y2 = new int[MAX_R];
+    public static int[] x1 = new int[MAX_N];
+    public static int[] y1 = new int[MAX_N];
+    public static int[] x2 = new int[MAX_N];
+    public static int[] y2 = new int[MAX_N];
 
     public static int[][] checked = new int[MAX_R + 1][MAX_R + 1];
 
