@@ -39,9 +39,12 @@ public class Main {
         int x2 = -10000;
         int y2 = -10000;
 
+        boolean flag = true; // 두 번째 직사각형이 첫 번째 직사각형을 감싸는지 여부
         for(int x = 0; x <= MAX_R; x++) {
             for(int y = 0; y <= MAX_R; y++) {
                 if(checked[x][y] == 1) {
+                    flag = false;
+                    System.out.println("1");
                     if(x1 > x) {
                         x1 = x;
                     }
@@ -57,8 +60,13 @@ public class Main {
                 }
             }
         }
-        // 좌측하단 좌표 말고 우측상단 좌표는 +1 한 상태에서 넓이 계산해야 함
-        System.out.println((x2 + 1 - x1) * (y2 + 1 - y1));
+        if(!flag) {
+            // 좌측하단 좌표 말고 우측상단 좌표는 +1 한 상태에서 넓이 계산해야 함
+            System.out.println((x2 + 1 - x1) * (y2 + 1 - y1));
+        } else {
+            System.out.println(0);
+        }
+        
 
     }
 }
