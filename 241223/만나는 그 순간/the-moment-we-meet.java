@@ -52,7 +52,7 @@ public class Main {
         }
 
         boolean isSameLoc = false;
-        for(int i = 1; i <= a_time; i++) {
+        for(int i = 1; i < a_time; i++) {
             if(arr_a[i] == arr_b[i]) {
                 isSameLoc = true;
                 System.out.println(i);
