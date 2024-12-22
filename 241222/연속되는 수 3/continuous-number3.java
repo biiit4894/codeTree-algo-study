@@ -15,7 +15,7 @@ public class Main {
         int cnt = 0;
         int max = 0;
         for(int i = 0; i < n; i++) {
-            if(i == 0 || arr[i - 1] * arr[i] > 0) {
+            if(i >= 1 && arr[i - 1] * arr[i] > 0) {
                 cnt++;
             } else {
                 cnt = 1;
