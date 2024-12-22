@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static final int MAX_R = 200;
+    public static final int OFFSET = 100;
     public static int[][] checked = new int[MAX_R + 1][MAX_R + 1];
 
     public static void main(String[] args) {
@@ -13,6 +14,9 @@ public class Main {
             x1[i] = sc.nextInt();
             y1[i] = sc.nextInt();
 
+            x1[i] += OFFSET;
+            y1[i] += OFFSET;
+            
             for(int j = x1[i]; j < x1[i] + 8; j++) {
                 for(int k = y1[i]; k < y1[i] + 8; k++) {
                     checked[j][k] = i + 1;
