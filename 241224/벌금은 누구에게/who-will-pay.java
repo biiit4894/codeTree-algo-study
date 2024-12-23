@@ -21,6 +21,7 @@ public class Main {
             if(nums[i] >= k) {
                 flag = true;
                 System.out.println(i);
+                break;
             }
         }
         if(!flag) {
