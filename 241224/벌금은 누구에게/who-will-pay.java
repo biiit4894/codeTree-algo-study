@@ -1,37 +1,34 @@
 import java.util.Scanner;
-
+// 해설
 public class Main {
+    public static final int MAX_N = 100;
+    public static final int MAX_M = 10000;
+    
     public static int n, m, k;
-
-    public static int getPunishStudentNo(int[] nums) {
-        for(int i = 1; i <= n; i++) {
-            if(nums[i] >= k) {
-                return i;
-            }
-        }
-        return 0;
-    }
+    public static int[] penalizedPerson = new int[MAX_M];
+    public static int[] penaltyNum = new int[MAX_N + 1];
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
         k = sc.nextInt();
-        int[] arr = new int[m]; // 벌칙을 받은 학생들의 번호
-        int[] nums = new int[n + 1]; // 학생 번호별로 벌칙을 받은 횟수
-
-        boolean flag = false; // 벌칙을 받는 학생이 존재하는지 여부
         for(int i = 0; i < m; i++) {
-            arr[i] = sc.nextInt();
-            nums[arr[i]]++;
-            if(getPunishStudentNo(nums) != 0) {
-                flag = true;
-                System.out.println(getPunishStudentNo(nums));
+            penalizedPerson[i] = sc.nextInt();
+        }
+
+        // 각 패널티 수를 세서, 최초로 K번 이상 벌칙을 받는 사람을 추적한다.
+        int ans = -1;
+        for(int i = 0; i < m; i++) {
+            int target = penalizedPerson[i];
+            penaltyNum[target]++;
+
+            if(penaltyNum[target] >= k) {
+                ans = target;
                 break;
             }
         }
-        if(!flag) {
-            System.out.println(-1);
-        }
+
+        System.out.print(ans);
     }
 }
