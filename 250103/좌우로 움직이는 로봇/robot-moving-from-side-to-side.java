@@ -70,7 +70,7 @@ public class Main {
 
         // 바로 직전에 다른 위치에 있다가 그 다음번에 같은 위치에 오게 될 때만 answer 증가
         for(int i = 1; i < time; i++) {
-            if(posA[i] == posB[i]) {
+            if(posA[i] == posB[i] && i != 1) {
                 if(!isSamePos) {
                     answer++;
                 }
