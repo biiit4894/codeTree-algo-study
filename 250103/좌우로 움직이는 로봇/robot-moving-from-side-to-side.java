@@ -64,14 +64,11 @@ public class Main {
         int beforeSame = 0;
         int answer = 0;
 
-        // bool 쓰니까 계속 틀림 ..
+    
         // 바로 직전에 다른 위치에 있다가 그 다음번에 같은 위치에 오게 될 때만 answer 증가
         for(int i = 1; i < MAX_D + 1; i++) {
-            if(posA[i] == posB[i]) {
-                if(beforeSame + 1 != i) {
-                    answer++;
-                }
-                beforeSame = i;
+            if(posA[i] == posB[i] && posA[i - 1] != posB[i - 1]) {
+                answer++;
             }
         }
         System.out.print(answer);
