@@ -32,6 +32,7 @@ public class Main {
             }
         }
 
+        // 움직임이 끝난 후에도 A의 위치 유지하기
         for(int i = timeA; i < MAX_D + 1; i++) {
             posA[i] = posA[i - 1];
         }
@@ -55,21 +56,25 @@ public class Main {
             }
         }
 
+        // 움직임이 끝난 후에도 B의 위치 유지하기
         for(int i = timeB; i < MAX_D + 1; i++) {
             posB[i] = posB[i - 1];
         }
 
-        int beforeSame = 0;
+        //int beforeSame = 0;
+        boolean isSamePos = false;
         int answer = 0;
 
 
         // 바로 직전에 다른 위치에 있다가 그 다음번에 같은 위치에 오게 될 때만 answer 증가
         for(int i = 1; i < MAX_D + 1; i++) {
             if(posA[i] == posB[i]) {
-                if(beforeSame + 1 != i) {
+                if(!isSamePos) {
                     answer++;
                 }
-                beforeSame = i;
+                isSamePos = true;
+            } else {
+                isSamePos = false;
             }
         }
         System.out.print(answer);
