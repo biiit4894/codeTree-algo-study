@@ -58,12 +58,12 @@ public class Main {
         // A가 B보다 오랜 시간 이동한 경우
         if(timeA > timeB) {
             time = timeA;
-            for(int i = timeB; i < timeB + (timeA - timeB); i++) {
+            for(int i = timeB; i <= timeA; i++) {
                 posB[i] = posB[i - 1] + OFFSET; // 차이 나는 시간만큼 B의 시간별 위치를 오프셋 값만 계속 더해서(그동안 이동하고 있는 A는 오프셋이 계속 증가하기 때문에) 그대로 채워주기
             }
         } else { // B가 A보다 오랜 시간 이동한 경우
             time = timeB;
-            for(int i = timeA; i < timeA + (timeB - timeA); i++) {
+            for(int i = timeA; i <= timeB; i++) {
                 posA[i] = posA[i - 1] + OFFSET; // 차이 나는 시간 만큼 A의 시간별 위치를 오프셋 값만 계속 더해서(그동안 이동하고 있는 B는 오프셋이 계속 증가하기 때문에) 그대로 채워주기
             }
         }
