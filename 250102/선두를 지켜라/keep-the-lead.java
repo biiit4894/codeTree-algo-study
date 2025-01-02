@@ -12,15 +12,15 @@ public class Main {
         n = sc.nextInt();
         m = sc.nextInt();
 
-        int timeA = 1;
+        int timeA = 1; 
         for(int i = 0; i < n; i++) {
             int v = sc.nextInt();
             int t = sc.nextInt();
 
-            while(t-- > 0) {
+            for(int j = t; j > 0; j--) {
                 posA[timeA] = posA[timeA - 1] + v;
                 timeA++;
-            }
+            } 
         }
 
         int timeB = 1;
@@ -28,7 +28,7 @@ public class Main {
             int v = sc.nextInt();
             int t = sc.nextInt();
 
-            while(t-- > 0) {
+            for(int j = t; j > 0; j--) {
                 posB[timeB] = posB[timeB - 1] + v;
                 timeB++;
             }
@@ -50,5 +50,7 @@ public class Main {
         }
 
         System.out.print(ans);
+         
+
     }
 }
