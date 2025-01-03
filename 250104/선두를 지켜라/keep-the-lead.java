@@ -34,7 +34,7 @@ public class Main {
         }
 
         int leader = 0, answer = 0;
-        for(int i = 1; i < timeA; i++) {
+        for(int i = 1; i <= timeA; i++) {
             if(posA[i] > posB[i]) {
                 if(leader == 2) {
                     answer++;
