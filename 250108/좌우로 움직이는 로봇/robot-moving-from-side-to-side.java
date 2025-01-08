@@ -17,20 +17,18 @@ public class Main {
             char d = sc.next().charAt(0);
             
             if(d == 'L') {
-                for(int j = t; j > 0; j--) {
+                for(int j = 0; j < t; j++) {
                     pos_A[time_A] = pos_A[time_A - 1] - 1;
                     time_A++;
                 }
             } else if(d == 'R') {
-                for(int j = t; j > 0; j--) {
+                for(int j = 0; j < t; j++) {
                     pos_A[time_A] = pos_A[time_A - 1] + 1;
                     time_A++;
                 }
             }
         }
-
         
-
         int time_B = 1;
         for(int i = 0; i < m; i++) {
             
@@ -38,13 +36,13 @@ public class Main {
             char d = sc.next().charAt(0);
 
             if(d == 'L') {
-                for(int j = t; j > 0; j--) {
+                for(int j = 0; j < t; j++) {
                     pos_B[time_B] = pos_B[time_B - 1] - 1;
                     time_B++;
                 }
 
             } else if(d == 'R') {    
-                for(int j = t; j > 0; j--) {
+                for(int j = 0; j < t; j++) {
                     pos_B[time_B] = pos_B[time_B - 1] + 1;
                     time_B++;
                 }
@@ -62,7 +60,6 @@ public class Main {
             }
         }
 
-
         int max_time = 0;
         if(time_A > time_B) {
             max_time = time_A;
@@ -76,8 +73,6 @@ public class Main {
                 answer++;
             }
         }
-
         System.out.print(answer);
-
     }
 }
