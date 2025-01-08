@@ -29,9 +29,7 @@ public class Main {
             }
         }
 
-        for(int i = time_A; i < MAX_POS; i++) {
-            pos_A[i] = pos_A[i - 1];
-        }
+        
 
         int time_B = 1;
         for(int i = 0; i < m; i++) {
@@ -54,13 +52,27 @@ public class Main {
             }
         }
 
-        for(int i = time_B; i < MAX_POS; i++) {
-            pos_B[i] = pos_B[i - 1];
+        if(time_A < time_B) {
+            for(int i = time_A; i < time_B; i++) {
+                pos_A[i] = pos_A[i - 1];
+            }
+        } else if(time_A > time_B) {
+            for(int i = time_B; i < time_A; i++) {
+                pos_B[i] = pos_B[i - 1];
+            }
+        }
+
+
+        int max_time = 0;
+        if(time_A > time_B) {
+            max_time = time_A;
+        } else {
+            max_time = time_B;
         }
 
         int answer = 0;
-        for(int i = 1; i < MAX_POS; i++) {
-            if(pos_A[i] == pos_B[i] && pos_A[i - 1] != pos_B[i- 1]) {
+        for(int i = 1; i < max_time; i++) {
+            if(pos_A[i] == pos_B[i] && pos_A[i - 1] != pos_B[i - 1]) {
                 answer++;
             }
         }
