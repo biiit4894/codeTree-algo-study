@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static final int MAX_POS = 1000000;
-    public static int[] pos_A = new int[MAX_POS];
-    public static int[] pos_B = new int[MAX_POS];
+    public static int[] pos_A = new int[MAX_POS + 1];
+    public static int[] pos_B = new int[MAX_POS + 1];
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
