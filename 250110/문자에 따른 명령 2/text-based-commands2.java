@@ -11,16 +11,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String str = sc.next();
-
+        
         int nx = 0;
         int ny = 0;
 
         int dirNum = 0;
 
         for(int i = 0; i < str.length(); i++) {
-            char c = str.toCharArray()[i];
+            char c = str.charAt(i);
             if(c == LEFT_90) {
-                dirNum = (dirNum + 3) % 4;
+                dirNum = (dirNum - 1 + 4) % 4;
             } else if(c == RIGHT_90) {
                 dirNum = (dirNum + 1) % 4;
             } else {
@@ -29,11 +29,8 @@ public class Main {
             }
         }
 
-        if(str.contains("F")) {
-            System.out.print(nx + " " + ny);
-        } else {
-            System.out.print("0 0");
-        }
+        System.out.print(nx + " " + ny);
+        
 
     }
 }
