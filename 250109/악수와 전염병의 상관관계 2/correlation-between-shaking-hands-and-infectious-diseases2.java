@@ -67,8 +67,10 @@ public class Main {
                     infectionNum[y]++;
                 }
             } else if(infection[x] == 1 && infection[y] == 1) {
-                if(infectionNum[x] <= k && infectionNum[y] <= k) {
+                if(infectionNum[x] <= k) {
                     infectionNum[x]++;
+                }
+                if(infectionNum[y] <= k) {
                     infectionNum[y]++;
                 }
             }
