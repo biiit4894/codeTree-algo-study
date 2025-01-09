@@ -18,9 +18,9 @@ public class Main {
         int dirNum = 0;
 
         for(int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
+            char c = str.charAt(i); // toCharArray() -> 메모리 초과 가능
             if(c == LEFT_90) {
-                dirNum = (dirNum - 1 + 4) % 4;
+                dirNum = (dirNum + 3) % 4;
             } else if(c == RIGHT_90) {
                 dirNum = (dirNum + 1) % 4;
             } else {
