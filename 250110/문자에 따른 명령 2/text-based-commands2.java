@@ -15,18 +15,25 @@ public class Main {
         int nx = 0;
         int ny = 0;
 
+        int dirNum = 0;
+
         for(int i = 0; i < str.length(); i++) {
             char c = str.toCharArray()[i];
             if(c == LEFT_90) {
-                nx += dx[i + 3];
-                ny += dy[i + 3];
+                dirNum = (dirNum + 3) % 4;
             } else if(c == RIGHT_90) {
-                nx += dx[i + 1];
-                ny += dy[i + 1];
-            } 
+                dirNum = (dirNum + 1) % 4;
+            } else {
+                nx += dx[dirNum];
+                ny += dy[dirNum];
+            }
         }
 
-        System.out.print(nx + " " + ny);
+        if(str.contains("F")) {
+            System.out.print(nx + " " + ny);
+        } else {
+            System.out.print("0 0");
+        }
 
     }
 }
