@@ -1,20 +1,36 @@
 import java.util.Scanner;
-
+// 해설
 public class Main {
+    public static final int MAX_N = 100;
+    public static final int DIR_NUM = 4;
+    
     public static int n;
+    public static int[][] arr = new int[MAX_N][MAX_N];
 
-    public static int[] dx = {0, 1, 0, -1};
-    public static int[] dy = {1, 0, -1, 0};
+    public static int[] dx = new int[]{0, 1, 0, -1};
+    public static int[] dy = new int[]{1, 0, -1, 0};
 
-    public static boolean isRange(int x, int y) {
-        return (0 <= x && x < n && 0 <= y && y < n);
+    public static boolean inRange(int x, int y) {
+        return 0 <= x && x < n && 0 <= y && y < n;
+    }
+
+    public static int adjaCentCnt(int x, int y) {
+        int cnt = 0;
+        for(int i = 0; i < DIR_NUM; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if(inRange(nx, ny) && arr[nx][ny] == 1) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
+        // 입력
         n = sc.nextInt();
-
-        int[][] arr = new int[n][n];
         
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
@@ -22,28 +38,17 @@ public class Main {
             }
         }
 
-
-        int cnt = 0; // 숫자 1이 적힌 칸이 3개 이상인 곳의 개수
+        // 각 칸을 탐색
+        int ans = 0;
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
-                int number1Cnt = 0; // 숫자 1이 적힌 칸의 개수
-                int x = i;
-                int y = j;
-                for(int dirNum = 0; dirNum < 4; dirNum++) {
-                    int nx = x + dx[dirNum];
-                    int ny = y + dy[dirNum];
-                    if(isRange(nx, ny) && arr[nx][ny] == 1) {
-                        number1Cnt++;
-                    }
-                }
-                
-                if(number1Cnt >= 3) {
-                    cnt++;
+                if(adjaCentCnt(i, j) >= 3) {
+                    ans++;
                 }
             }
-        } 
+        }
 
-        System.out.print(cnt);
+        System.out.print(ans);
 
     }
 }
