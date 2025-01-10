@@ -40,20 +40,22 @@ public class Main {
 
 
         int moveDir = getDir(d);
+        int x = r - 1;
+        int y = c - 1;
 
         while(t > 0) {
-            int nx = r - 1 + dx[moveDir];
-            int ny = c - 1 + dy[moveDir];
+            int nx = x + dx[moveDir];
+            int ny = y + dy[moveDir];
             if(!inRange(nx, ny)) {
                 moveDir = 3 - moveDir;
                 t--;
             }
-            r += dx[moveDir];
-            c += dy[moveDir];
+            x += dx[moveDir];
+            y += dy[moveDir];
             t--;
         }
 
-        System.out.println(r + " " + c);
+        System.out.println((x + 1) + " " + (y + 1));
         
 
     }
