@@ -26,7 +26,7 @@ public class Main {
     }
 
     public static boolean inRange(int x, int y) {
-        return 1 <= x && x <= n && 1 <= y && y <= n;
+        return 0 <= x && x < n && 0 <= y && y < n;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -40,6 +40,8 @@ public class Main {
 
 
         int moveDir = getDir(d);
+        r--;
+        c--;
 
         while(t > 0) {
             int nx = r + dx[moveDir];
@@ -54,7 +56,7 @@ public class Main {
             t--;
         }
 
-        System.out.println(r + " " + c);
+        System.out.println((r + 1) + " " + (c + 1));
         
 
     }
