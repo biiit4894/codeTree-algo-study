@@ -4,8 +4,8 @@ public class Main {
     public static final int MAX_N = 20;
     public static int[][] board = new int[MAX_N + 1][MAX_N + 1];
 
-    public static final int[] dx = new int[]{0, 1, -1, 0};
-    public static final int[] dy = new int[]{1, 0, 0, -1};
+    public static final int[] dx = new int[]{1, 0, 0, -1};
+    public static final int[] dy = new int[]{0, 1, -1, 0};
 
     public static int n, t, r, c;
     public static char d;
@@ -26,11 +26,11 @@ public class Main {
         c = sc.nextInt();
         d = sc.next().charAt(0);
 
-        if(d == 'R') {
+        if(d == 'D') {
             dirNum = 0;
-        } else if(d == 'D') {
+        } else if(d == 'R') {
             dirNum = 1;
-        } else if(d == 'U') {
+        } else if(d == 'L') {
             dirNum = 2;
         } else {
             dirNum = 3;
@@ -39,10 +39,10 @@ public class Main {
         for(int i = 0; i < t; i++) {
             int nx = r + dx[dirNum];
             int ny = c + dy[dirNum];
+            
             if(!isRange(nx, ny)) {
                 dirNum = 3 - dirNum;
             } else {
-                
                 r += dx[dirNum];
                 c += dy[dirNum];
             }
