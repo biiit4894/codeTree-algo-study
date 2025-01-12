@@ -49,20 +49,16 @@ public class Main {
                 y += dy[dirNum];
                 time++;
                 
-                // System.out.println("x: " + x + ", y: " + y);
                 if(isRange(x, y)) {
                     board[x][y] = i + 1;
                 }   
 
                 if(x == OFFSET && y == OFFSET) {
-                    // System.out.println("full circle");
-                    // System.out.println("x: " + x + ", y: " + y);
-                    // System.out.println("time: " + time);
                     answer = time;
-                    // break;
+                    System.out.println(answer);
+                    return;
                 }
             }
         }
-        System.out.println(answer);
     }
 }
