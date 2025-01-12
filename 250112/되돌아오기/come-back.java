@@ -36,7 +36,6 @@ public class Main {
         n = sc.nextInt();
 
         board[x][y] = 0;
-        int answer = -1;
         int time = 0;
         for(int i = 0; i < n; i++) {
             char dir = sc.next().charAt(0);
@@ -54,11 +53,11 @@ public class Main {
                 }   
 
                 if(x == OFFSET && y == OFFSET) {
-                    answer = time;
-                    System.out.println(answer);
+                    System.out.println(time);
                     return;
                 }
             }
         }
+        System.out.println(-1);
     }
 }
