@@ -1,5 +1,5 @@
 import java.util.Scanner;
-// 해설 풀이
+// 첫 풀이
 public class Main {
     public static final int SIDE_NUM = 4;
     public static final int MAX_N = 1000;
@@ -58,7 +58,7 @@ public class Main {
         // 0 0 5
         // 0 8 7
         // 그리고 k가 위치한 행, 열을 찾아서 그 다음 스텝을 진행하려했음...
-        
+
         for(int i = 2; i <= k; i++) {
             int nx = x + dx[dirNum];
             int ny = y + dy[dirNum];
