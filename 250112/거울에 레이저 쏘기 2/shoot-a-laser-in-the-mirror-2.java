@@ -1,83 +1,90 @@
 import java.util.Scanner;
-// 첫 풀이
+// 해설 풀이
 public class Main {
-    public static final int SIDE_NUM = 4;
+    public static final int DIR_NUM = 4;
     public static final int MAX_N = 1000;
 
-    // 거울 튕김 확인을 위한 격자
-    public static int[][] map = new int[MAX_N + 1][MAX_N + 1];
-    
-    // k에 대한 행, 열 번호 파악을 위한 격자
-    public static int[][] board = new int[MAX_N + 1][MAX_N + 1];
+    public static int n;
+    public static char[][] arr = new char[MAX_N][MAX_N];
 
-    // 격자 동,남,서,북
-    public static final int[] dx = new int[]{0, 1, 0, -1};
-    public static final int[] dy = new int[]{1, 0, -1, 0};
+    public static int startNum;
+    public static int x, y, moveDir;
 
-    public static int n, k;
-    public static int x = 1, y = 1, dirNum = 0;
-
-    public static boolean isRange(int x, int y) {
-        return (1 <= x && x <= n && 1 <= y && y <= n);
+    // 주어진 숫자에 따라
+    // 시작 위치와 방향을 구한다.
+    public static void initialize(int num) {
+        if(num <= n) {
+            x = 0; 
+            y = num - 1; 
+            moveDir = 0;
+        } else if(num <= 2 * n) {
+            x = num - n - 1;
+            y = n - 1;
+            moveDir = 1;
+        } else if(num <= 3 * n) {
+            x = n - 1;
+            y = n - (num - 2 * n);
+            moveDir = 2;
+        } else {
+            x = n - (num - 3 * n);
+            y = 0;
+            moveDir = 3;
+        }
     }
 
-    public static int getGroupNum(int k) {
-        if(k <= n) {
-            return 1;
-        } else if(k <= 2 * n) {
-            return 2;
-        } else if(k <= 3 * n) {
-            return 3;
-        } else {
-            return 4;
+    public static boolean inRange(int x, int y) {
+        return (0 <= x && x < n && 0 <= y && y < n);
+    }
+
+    // (x, y)에서 시작하여 nextDir 방향으로 
+    // 이동한 이후의 위치를 구한다.
+    public static void move(int nextDir) {
+        int[] dx = new int[]{1, 0, -1, 0}; // 남 - 서 - 북 - 동
+        int[] dy = new int[]{0, -1, 0, 1};
+
+        x += dx[nextDir];
+        y += dy[nextDir];
+        moveDir = nextDir;
+    }
+
+    // XOR 연산(^)은 두 비트가 다를 때 1, 같을 때 0을 반환한다.
+    // decimal | binary
+    // 0 ^ 1  =  001 (1 in decimal)
+    // 1 ^ 1  =  000 (0 in decimal)
+    // 2 ^ 1  =  011 (3 in decimal)
+    // 3 ^ 1  =  010 (2 in decimal)
+    public static int simulate() {
+        int moveNum = 0;
+        while(inRange(x, y)) {
+            if(arr[x][y] == '/') {
+                move(moveDir ^ 1);  // 0 <-> 1 / 2 <-> 3 
+            } else {
+                move(3 - moveDir);  // 0 <-> 3 / 1 <-> 2
+            }
+            moveNum += 1;
         }
+        return moveNum;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        // 입력
         n = sc.nextInt();
         for(int i = 0; i < n; i++) {
             String str = sc.next();
             for(int j = 0; j < str.length(); j++) {
-                char c = str.charAt(j);
-                if(c == '/') {
-                    map[i][j] = 1;
-                } else if(c == '\\') {
-                    map[i][j] = 2;
-                }
+                arr[i][j] = str.charAt(j);
             }                
         }
 
-        k = sc.nextInt();
+        startNum = sc.nextInt();
 
-        board[1][1] = 1;
+        // 시작 위치와 방향을 구한다
+        initialize(startNum);
+        // (x, y)에서 moveDir 방향으로 시작하여
+        // 시뮬레이션을 진행한다.
+        int moveNum = simulate();
 
-        // 시계방향으로 돌면서 위치 표시..를 하려고 했던 것
-        // ex) n = 3, k = 8
-        // 1 2 4
-        // 0 0 5
-        // 0 8 7
-        // 그리고 k가 위치한 행, 열을 찾아서 그 다음 스텝을 진행하려했음...
-
-        for(int i = 2; i <= k; i++) {
-            int nx = x + dx[dirNum];
-            int ny = y + dy[dirNum];
-            // 격자 범위 밖이거나 이미 방문한 경우 시계방향 90' 회전
-            if(!isRange(nx, ny) || board[nx][ny] != 0) {
-                dirNum = (dirNum + 1) % 4;
-                board[x][y] = i;
-            } 
-            x = nx;
-            y = ny;
-            board[nx][ny] = i;
-        }
-
-        for(int i = 0; i <= n; i++) {
-            for(int j = 0; j <= n; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println();
-        }
-
+        System.out.print(moveNum);
     }
 }
