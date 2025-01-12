@@ -42,7 +42,7 @@ public class Main {
         }
 
         // 시작점으로 되돌아오지 못했을 때
-        if(flag == false) {
+        if(!flag) {
             System.out.print(-1);
         }
     }
