@@ -11,8 +11,6 @@ public class Main {
     public static int n, m;
     public static int x = 0, y = 0, moveDir = 0;
 
-    public static char letter = 'A';
-    
     public static boolean inRange(int x, int y) {
         return (0 <= x && x < n && 0 <= y && y < m);
     }
@@ -28,7 +26,7 @@ public class Main {
             }
         }
 
-        board[x][y] = letter;
+        board[x][y] = 'A';
 
 
         for(int i = 1; i < n * m; i++) {
@@ -43,7 +41,8 @@ public class Main {
 
             x = nx;
             y = ny;
-            board[nx][ny] = (char)(i + 65); 
+
+            board[nx][ny] = (char)((i % 26) + 'A');
         }
 
         
