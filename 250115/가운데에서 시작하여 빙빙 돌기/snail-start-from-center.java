@@ -47,8 +47,9 @@ public class Main {
             if(i != 2) {
                 // nx, ny가 격자 범위 밖이거나 
                 // x, y가 반시계방향 90' 회전해야하는 위치인 경우
+                // moveDir 1 증가시키기(3일 경우 0으로 넘기기) -> x, y 입장에서는 반시계방향 90' 회전
                 if(!isRange(nx, ny) || isTimeToTurn(x, y)) {
-                    moveDir = (moveDir + 1) % 4; // moveDir 1 증가(3일 경우 0으로 넘기기)
+                    moveDir = (moveDir + 1) % 4; 
                     nx = x + dx[moveDir];
                     ny = y + dy[moveDir];
                 }
