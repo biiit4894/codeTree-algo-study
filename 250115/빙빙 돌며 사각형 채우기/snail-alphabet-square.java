@@ -38,27 +38,20 @@ public class Main {
         visited[currX][currY] = true;
 
         // n*m개의 알파벳을 적는다.
-        for(int i = 1; i < n * m; i++) { // i번째 문자를 어디에 적을지 결정한다.
-            while(true) { // 나아갈 수 있을때까지 방향을 바꿔가며 확인한다.
-                int nextX = currX + dx[direction];
-                int nextY = currY + dy[direction];
-
-                // 그 위치로 나아갈 수 있는지 확인한다.
-                if(canGo(n, m, nextX, nextY)) {
-                    // 나아갈 수 있다면 위치를 갱신하고 배열에 올바른 값을 채워넣는다.
-                    currX = nextX;
-                    currY = nextY;
+        for(int i = 1; i < n * m; i++) {
+            while(true) {
+                int nx = currX + dx[direction];
+                int ny = currY + dy[direction];
+                if(canGo(n, m, nx, ny)) {
+                    currX = nx;
+                    currY = ny;
                     visited[currX][currY] = true;
-                    answer[currX][currY] = (char)(i % 26 + 'A');
+                    answer[currX][currY] = (char)(i % 26 + 65); // + 'A' 대신 + 65도 괜찮은듯?
                     break;
                 } else {
-                    // 나아갈 수 없다면 시계방향으로 90'를 회전해
-                    // 그 다음 방향을 확인한다.
                     direction = (direction + 1) % 4;
                 }
-
             }
-
         }
 
         // 출력:
